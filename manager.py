@@ -478,6 +478,18 @@ class CricketScoreboardPlugin(BasePlugin):
         except Exception as e:
             self.logger.debug(f"Could not load logo for {team.get('abbrev', 'unknown')}: {e}")
             return None
+
+    def _draw_text_with_outline(self, draw: ImageDraw.Draw, text: str, position: tuple, font, fill=(255, 255, 255), outline_color=(0, 0, 0)):
+        """Draw text with a black outline for better readability."""
+        try:
+            x, y = position
+            # Draw outline
+            for dx, dy in [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]:
+                draw.text((x + dx, y + dy), text, font=font, fill=outline_color)
+            # Draw main text
+            draw.text((x, y), text, font=font, fill=fill)
+        except Exception as e:
+            self.logger.error(f"Error drawing text with outline: {e}")
     
     def _display_game(self, game: Dict, mode: str):
         """Display a single game."""
