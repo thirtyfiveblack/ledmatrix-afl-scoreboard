@@ -49,13 +49,17 @@ class CricketScoreboardPlugin(BasePlugin):
     # ESPN API endpoints for cricket leagues
     ESPN_API_URLS = {
         'theashes.2526': 'https://site.api.espn.com/apis/site/v2/sports/cricket/1455609/scoreboard',
-        'sheffieldshield.2526': 'https://site.api.espn.com/apis/site/v2/sports/cricket/1495274/scoreboard'
+        'sheffieldshield.2526': 'https://site.api.espn.com/apis/site/v2/sports/cricket/1495274/scoreboard',
+        'wbbl.2526': 'https://site.api.espn.com/apis/site/v2/sports/cricket/1490537/scoreboard',
+        'bbl.2526': 'https://site.api.espn.com/apis/site/v2/sports/cricket/1490534/scoreboard'
     }
 
     # League display names
     LEAGUE_NAMES = {
         'theashes.2526': 'The Ashes 2025/26',
-        'sheffieldshield.2526': 'Sheffield Shield 2025/26'
+        'sheffieldshield.2526': 'Sheffield Shield 2025/26',
+        'wbbl.2526': 'WBBL 2025/26',
+        'bbl.2526': 'BBL 2025/26'
     }
 
     def __init__(self, plugin_id: str, config: Dict[str, Any],
