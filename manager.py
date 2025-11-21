@@ -2,10 +2,10 @@
 Cricket Scoreboard Plugin for LEDMatrix
 
 Displays live, recent, and upcoming Cricket games across multiple leagues including
-Premier League, La Liga, Bundesliga, Serie A, Ligue 1, MLS, and more.
+The Ashes, Sheffield Shield and more.
 
 Features:
-- Multiple league support (Premier League, La Liga, Bundesliga, Serie A, Ligue 1, MLS, etc.)
+- Multiple league support (Ashes, etc.)
 - Live game tracking with match time and scores
 - Recent game results
 - Upcoming game schedules
@@ -48,25 +48,13 @@ class CricketScoreboardPlugin(BasePlugin):
     # ESPN API endpoints for cricket leagues
     ESPN_API_URLS = {
         'theashes.2526': 'https://site.api.espn.com/apis/site/v2/sports/cricket/1455609/scoreboard',
-        'sheffieldshield.2526': 'https://site.api.espn.com/apis/site/v2/sports/cricket/1495274/scoreboard',
-        'ger.1': 'https://site.api.espn.com/apis/site/v2/sports/cricket/ger.1/scoreboard',
-        'ita.1': 'https://site.api.espn.com/apis/site/v2/sports/cricket/ita.1/scoreboard',
-        'fra.1': 'https://site.api.espn.com/apis/site/v2/sports/cricket/fra.1/scoreboard',
-        'usa.1': 'https://site.api.espn.com/apis/site/v2/sports/cricket/usa.1/scoreboard',
-        'uefa.champions': 'https://site.api.espn.com/apis/site/v2/sports/cricket/uefa.champions/scoreboard',
-        'uefa.europa': 'https://site.api.espn.com/apis/site/v2/sports/cricket/uefa.europa/scoreboard'
+        'sheffieldshield.2526': 'https://site.api.espn.com/apis/site/v2/sports/cricket/1495274/scoreboard'
     }
 
     # League display names
     LEAGUE_NAMES = {
-        'eng.1': 'Premier League',
-        'esp.1': 'La Liga',
-        'ger.1': 'Bundesliga',
-        'ita.1': 'Serie A',
-        'fra.1': 'Ligue 1',
-        'usa.1': 'MLS',
-        'uefa.champions': 'Champions League',
-        'uefa.europa': 'Europa League'
+        'theashes.2526': 'The Ashes 2025/26',
+        'sheffieldshield.2526': 'Sheffield Shield 2025/26'
     }
 
     def __init__(self, plugin_id: str, config: Dict[str, Any],
