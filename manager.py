@@ -24,7 +24,7 @@ from pathlib import Path
 
 import pytz
 import requests
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 from src.plugin_system.base_plugin import BasePlugin
 
