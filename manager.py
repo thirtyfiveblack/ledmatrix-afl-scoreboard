@@ -476,8 +476,10 @@ class CricketScoreboardPlugin(BasePlugin):
             # TODO: Add team logos if available
             # Load team logos
             home_logo = self._load_team_logo(home_team, game.get('league', ''))
+            self.logger.info(f"Working on {home_team} logo from ESPN API...")
             away_logo = self._load_team_logo(away_team, game.get('league', ''))
-
+            self.logger.info(f"Working on {away_team} logo from ESPN API...")
+            
             # TODO: Use font manager for text rendering
             # TODO: Add scores, time, half display
 
