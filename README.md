@@ -1,6 +1,6 @@
 # Cricket Scoreboard Plugin
 
-A plugin for LEDMatrix that displays live, recent, and upcoming cricket games.
+A plugin for [https://github.com/ChuckBuilds/LEDMatrix LEDMatrix] that displays live, recent, and upcoming cricket games.
 
 ## Features
 
@@ -22,14 +22,34 @@ A plugin for LEDMatrix that displays live, recent, and upcoming cricket games.
 
 ### Per-League Settings
 
-#### Premier League Configuration
+#### The Ashes Configuration
 
 ```json
 {
   "leagues": {
-    "eng.1": {
+    "theashes.2526": {
       "enabled": true,
-      "favorite_teams": ["Manchester United", "Liverpool", "Arsenal"],
+      "favorite_teams": ["Australia"],
+      "display_modes": {
+        "live": true,
+        "recent": true,
+        "upcoming": true
+      },
+      "recent_games_to_show": 5,
+      "upcoming_games_to_show": 10
+    }
+  }
+}
+```
+
+#### WBBL Configuration
+
+```json
+{
+  "leagues": {
+    "wbbl.2526": {
+      "enabled": true,
+      "favorite_teams": ["Melbourne Renegades"],
       "display_modes": {
         "live": true,
         "recent": true,
@@ -46,15 +66,18 @@ A plugin for LEDMatrix that displays live, recent, and upcoming cricket games.
 
 The plugin supports three display modes:
 
-1. **soccer_live**: Shows currently active games
-2. **soccer_recent**: Shows recently completed games
-3. **soccer_upcoming**: Shows scheduled upcoming games
+1. **cricket_live**: Shows currently active games
+2. **cricket_recent**: Shows recently completed games
+3. **cricket_upcoming**: Shows scheduled upcoming games
 
 ## Supported Leagues
 
-The plugin supports the following soccer leagues:
+The plugin supports the following cricket competitions:
 
-- **eng.1**: Premier League (England)
+- **theashes.2526**: The Ashes (Australia vs England in Australia Summer 2025-26)
+- **sheffieldshield.2526**: Australian Sheffield Shield Domestic Competition
+- **wbbl.2526**: Womens Big Bash League
+- **bbl.2526**: Mens Big Bash League
 
 ## Team Names
 
@@ -86,7 +109,7 @@ This plugin requires the main LEDMatrix installation and uses the plugin system 
 ## Troubleshooting
 
 - **No games showing**: Check if leagues are enabled and API endpoints are accessible
-- **Missing team logos**: Ensure team logo files exist in your assets/sports/soccer_logos/ directory
+- **Missing team logos**: Ensure team logo files exist in your logos/ directory
 - **Slow updates**: Adjust the update interval in league configuration
 - **API errors**: Check your internet connection and ESPN API availability
 
