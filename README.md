@@ -1,6 +1,6 @@
 # Cricket Scoreboard Plugin
 
-A plugin for [https://github.com/ChuckBuilds/LEDMatrix LEDMatrix] that displays live, recent, and upcoming cricket games.
+A plugin for [https://github.com/ChuckBuilds/LEDMatrix | LEDMatrix] that displays live, recent, and upcoming cricket games.
 
 ## Features
 
