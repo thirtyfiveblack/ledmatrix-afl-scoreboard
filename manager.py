@@ -554,12 +554,12 @@ class CricketScoreboardPlugin(BasePlugin):
 
                 # Inning/Status (top center)
                 if status.get('state') == 'post':
-                    status_text = "FINAL"
+                    status_text = status.get('summary','Final')
                 elif status.get('state') == 'pre':
-                    status_text = "UPCOMING"
+                    status_text = status.get('summary','Upcoming')
                 else:
                     # Live game - show inning
-                    status_text = status.get('detail', status.get('short_detail', ''))
+                    status_text = status.get('summary','Live')
                 
                 status_width = draw_overlay.textlength(status_text, font=self.fonts['time'])
                 status_x = (matrix_width - status_width) // 2
