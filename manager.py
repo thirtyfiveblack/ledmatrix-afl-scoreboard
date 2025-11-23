@@ -114,7 +114,8 @@ class CricketScoreboardPlugin(BasePlugin):
             fonts['time'] = ImageFont.truetype("assets/fonts/PressStart2P-Regular.ttf", 8)
             fonts['team'] = ImageFont.truetype("assets/fonts/PressStart2P-Regular.ttf", 8)
             fonts['status'] = ImageFont.truetype("assets/fonts/4x6-font.ttf", 6)
-            fonts['detail'] = ImageFont.truetype("assets/fonts/4x6-font.ttf", 8)
+            #fonts['detail'] = ImageFont.truetype("assets/fonts/4x6-font.ttf", 6)
+            fonts['detail'] = ImageFont.truetype("assets/fonts/PressStart2P-Regular.ttf", 8)
             fonts['rank'] = ImageFont.truetype("assets/fonts/PressStart2P-Regular.ttf", 10)
             self.logger.info("Successfully loaded fonts")
         except IOError as e:
