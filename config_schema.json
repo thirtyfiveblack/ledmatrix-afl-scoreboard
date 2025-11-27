@@ -198,6 +198,118 @@
           },
           "additionalProperties": false
         },
+        "wbbl.2526": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true,
+              "description": "Enable WBBL games"
+            },
+            "favorite_teams": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "Team name or abbreviation"
+              },
+              "uniqueItems": true,
+              "maxItems": 20,
+              "description": "List of favorite teams to prioritize"
+            },
+            "display_modes": {
+              "type": "object",
+              "properties": {
+                "live": {
+                  "type": "boolean",
+                  "default": true,
+                  "description": "Show live games"
+                },
+                "recent": {
+                  "type": "boolean",
+                  "default": true,
+                  "description": "Show recently completed games"
+                },
+                "upcoming": {
+                  "type": "boolean",
+                  "default": true,
+                  "description": "Show upcoming games"
+                }
+              },
+              "additionalProperties": false
+            },
+            "recent_games_to_show": {
+              "type": "integer",
+              "default": 5,
+              "minimum": 1,
+              "maximum": 20,
+              "description": "Maximum number of recent games to display"
+            },
+            "upcoming_games_to_show": {
+              "type": "integer",
+              "default": 10,
+              "minimum": 1,
+              "maximum": 20,
+              "description": "Maximum number of upcoming games to display"
+            }
+          },
+          "additionalProperties": false
+        },
+        "bbl.2526": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true,
+              "description": "Enable BBL games"
+            },
+            "favorite_teams": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "Team name or abbreviation"
+              },
+              "uniqueItems": true,
+              "maxItems": 20,
+              "description": "List of favorite teams to prioritize"
+            },
+            "display_modes": {
+              "type": "object",
+              "properties": {
+                "live": {
+                  "type": "boolean",
+                  "default": true,
+                  "description": "Show live games"
+                },
+                "recent": {
+                  "type": "boolean",
+                  "default": true,
+                  "description": "Show recently completed games"
+                },
+                "upcoming": {
+                  "type": "boolean",
+                  "default": true,
+                  "description": "Show upcoming games"
+                }
+              },
+              "additionalProperties": false
+            },
+            "recent_games_to_show": {
+              "type": "integer",
+              "default": 5,
+              "minimum": 1,
+              "maximum": 20,
+              "description": "Maximum number of recent games to display"
+            },
+            "upcoming_games_to_show": {
+              "type": "integer",
+              "default": 10,
+              "minimum": 1,
+              "maximum": 20,
+              "description": "Maximum number of upcoming games to display"
+            }
+          },
+          "additionalProperties": false
+        },
         "sheffieldshield.2526": {
           "type": "object",
           "properties": {
@@ -210,11 +322,11 @@
               "type": "array",
               "items": {
                 "type": "string",
-                "description": "La Liga team name or abbreviation"
+                "description": "Sheffield Shield team name or abbreviation"
               },
               "uniqueItems": true,
               "maxItems": 20,
-              "description": "List of favorite La Liga teams to prioritize"
+              "description": "List of favorite Sheffield Shield teams to prioritize"
             },
             "display_modes": {
               "type": "object",
@@ -222,17 +334,17 @@
                 "live": {
                   "type": "boolean",
                   "default": true,
-                  "description": "Show live La Liga games"
+                  "description": "Show live Sheffield Shield games"
                 },
                 "recent": {
                   "type": "boolean",
                   "default": true,
-                  "description": "Show recently completed La Liga games"
+                  "description": "Show recently completed Sheffield Shield games"
                 },
                 "upcoming": {
                   "type": "boolean",
                   "default": true,
-                  "description": "Show upcoming La Liga games"
+                  "description": "Show upcoming Sheffield Shield games"
                 }
               },
               "additionalProperties": false
@@ -242,14 +354,14 @@
               "default": 5,
               "minimum": 1,
               "maximum": 20,
-              "description": "Maximum number of recent La Liga games to display"
+              "description": "Maximum number of recent Sheffield Shield games to display"
             },
             "upcoming_games_to_show": {
               "type": "integer",
               "default": 10,
               "minimum": 1,
               "maximum": 20,
-              "description": "Maximum number of upcoming La Liga games to display"
+              "description": "Maximum number of upcoming Sheffield Shield games to display"
             }
           },
           "additionalProperties": false
