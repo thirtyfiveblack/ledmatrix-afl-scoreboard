@@ -296,7 +296,9 @@ class CricketScoreboardPlugin(BasePlugin):
             # Find home and away teams
             home_team = next((c for c in competitors if c.get('homeAway') == 'home'), None)
             away_team = next((c for c in competitors if c.get('homeAway') == 'away'), None)
-            #home_team_linescore
+            
+            home_team_linescore_1 = home_team.get('linescores', [{}])[0]
+            home_team_linescore_2 = home_team.get('linescores', [{}])[1]
 
             if not home_team or not away_team:
                 return None
@@ -313,11 +315,11 @@ class CricketScoreboardPlugin(BasePlugin):
                     #'score': int(home_team.get('score', 0)),
                     'score': home_team.get('score', 'Unknown'),
                     'logo': home_team.get('team', {}).get('logo')
-                    if home_team.get('linescores', [{}])[0].get('isBatting', []) == 'true':
+                    #if home_team.get('linescores', [{}])[0].get('isBatting', []) == true:
 #games = data.get('dates', [{}])[0].get('games', [])
-                        'wickets': home_team.get('linescores', [0]).get('wickets',0),
-                        'runs': home_team.get('linescores', [0]).get('runs',0),
-                        'overs': home_team.get('linescores', [0]).get('overs',0)
+                        #'wickets': home_team.get('linescores', [0]).get('wickets',0),
+                        #'runs': home_team.get('linescores', [0]).get('runs',0),
+                        #'overs': home_team.get('linescores', [0]).get('overs',0)
                 },
                 'away_team': {
                     'name': away_team.get('team', {}).get('displayName', 'Unknown'),
