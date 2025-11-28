@@ -573,13 +573,14 @@ class CricketScoreboardPlugin(BasePlugin):
                 elif status.get('state') == 'post':
                     status_text = status.get('summary','Final')
                 elif status.get('state') == 'pre':
-                    status_text = f"{game.get('generalClassCard','')} - {status.get('summary','Upcoming')}"
+                    status_text = status.get('summary','Upcoming')
+                    #status_text = f"{game.get('generalClassCard','')} - {status.get('summary','Upcoming')}"
                 else:
                     # Live game - show inning
-                    #status_text = status.get('description','Live')
-                    status_text = f"{game.get('generalClassCard','')} - {status.get('description','Live')}"
+                    status_text = status.get('description','Live')
+                    #status_text = f"{game.get('generalClassCard','')} - {status.get('description','Live')}"
 
-                status_text = f"{game.get('generalClassCard','')} - {game.get('venue','')}"
+                #status_text = f"{game.get('generalClassCard','')} - {game.get('venue','')}"
                 
                 status_width = draw_overlay.textlength(status_text, font=self.fonts['time'])
                 status_x = (matrix_width - status_width) // 2
@@ -602,6 +603,13 @@ class CricketScoreboardPlugin(BasePlugin):
                 summary_x = (matrix_width - summary_width) // 2
                 summary_y = (matrix_height // 2) + 11
                 self._draw_text_with_outline(draw_overlay, summary_text, (summary_x, summary_y), self.fonts['detail'], fill=(255, 200, 0))
+                
+                venue_text = game.get('venue','')
+                venue_width = 
+                venue_x = (matrix_width - venue_width) // 2
+                venue_y = matrix_height
+                self._draw_text_with_outline(draw_overlay, venue_text, (venue_x, venue_y), self.fonts['detail'], fill=(255, 200, 0))
+
                 
                 # Composite and display
                 final_img = Image.alpha_composite(main_img, overlay)
