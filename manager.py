@@ -50,7 +50,7 @@ class CricketScoreboardPlugin(BasePlugin):
     ESPN_API_URLS = {
         'theashes.2526': 'https://site.api.espn.com/apis/site/v2/sports/cricket/1455609/scoreboard',
         'sheffieldshield.2526': 'https://site.api.espn.com/apis/site/v2/sports/cricket/1495274/scoreboard',
-        'wbbl.2526': 'https://site.api.espn.com/apis/site/v2/sports/cricket/1490537/scoreboard',
+        'wbbl.2526': 'https://site.api.espn.com/apis/site/v2/sports/cricket/1490537/scoreboard?dates=20251127',
         'bbl.2526': 'https://site.api.espn.com/apis/site/v2/sports/cricket/1490534/scoreboard'
     }
 
@@ -311,10 +311,11 @@ class CricketScoreboardPlugin(BasePlugin):
                     'abbrev': home_team.get('team', {}).get('abbreviation', 'UNK'),
                     #'score': int(home_team.get('score', 0)),
                     'score': home_team.get('score', 'Unknown'),
-                    'logo': home_team.get('team', {}).get('logo')
-                    #'wickets': home_team.get('linescores', {}).get('wickets'),
-                    #'runs': home_team.get('linescores', {}).get('runs'),
-                    #'overs': home_team.get('linescores', {}).get('overs')
+                    'logo': home_team.get('team', {}).get('logo'),
+                    if home_team.get('linescores', [{}])[0].get('isBatting') == 'true':
+                        'wickets': home_team.get('linescores', [{}])[0].get('wickets'),
+                        'runs': home_team.get('linescores', [{}])[0].get('runs'),
+                        'overs': home_team.get('linescores', [{}])[0].get('overs')
                 },
                 'away_team': {
                     'name': away_team.get('team', {}).get('displayName', 'Unknown'),
