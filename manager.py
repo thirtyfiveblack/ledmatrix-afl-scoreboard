@@ -395,7 +395,7 @@ class CricketScoreboardPlugin(BasePlugin):
         for i in range(len(filtered_games)):
             game = filtered_games[i]
             self._display_game(game, display_mode)
-            time.sleep(self.display_duration)
+            time.sleep(self.display_duration / 2)
 
     def _filter_games_by_mode(self, mode: str) -> List[Dict]:
         """Filter games based on display mode and per-league settings."""
