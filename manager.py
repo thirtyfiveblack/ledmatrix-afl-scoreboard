@@ -578,6 +578,8 @@ class CricketScoreboardPlugin(BasePlugin):
                     # Live game - show inning
                     #status_text = status.get('description','Live')
                     status_text = f"{game.get('generalClassCard','')} - {status.get('description','Live')}"
+
+                status_text = f"{game.get('generalClassCard','')} - {game.get('venue','')}"
                 
                 status_width = draw_overlay.textlength(status_text, font=self.fonts['time'])
                 status_x = (matrix_width - status_width) // 2
