@@ -572,10 +572,10 @@ class CricketScoreboardPlugin(BasePlugin):
                 main_img.paste(away_logo, (away_x, away_y), away_logo)
 
                 # Draw scores (centered)
-                home_score = str(home_team.get('score', 0))
-                away_score = str(away_team.get('score', 0))
+                #home_score = str(home_team.get('score', 0))
+                #away_score = str(away_team.get('score', 0))
                 #score_text = f"{away_score}-{home_score}"
-                score_text = f"{home_score}-{away_score}"
+                #score_text = f"{home_score}-{away_score}"
                 
                 home_wickets = str(home_team.get('wickets', 0))
                 home_runs = str(home_team.get('runs', 0))
@@ -597,13 +597,13 @@ class CricketScoreboardPlugin(BasePlugin):
                 away_runs = str(away_team.get('runs', 0))
                 away_score_text = f"{away_wickets}/{away_runs}"
                 away_score_text_width = draw_overlay.textlength(away_score_text, font=self.fonts['rank'])
-                away_score_text_x = (matrix_width - 60)
+                away_score_text_x = (matrix_width - 70)
                 away_score_text_y = (matrix_height // 2) - 5
                 away_overs = str(away_team.get('overs', 0))
                 away_overs_text = f"{away_overs} Overs"
                 away_overs_text = away_overs_text.replace(".0 "," ")
                 away_overs_text_width = draw_overlay.textlength(away_overs_text, font=self.fonts['detail'])
-                away_overs_text_x = (matrix_width - 60)
+                away_overs_text_x = (matrix_width - 70)
                 away_overs_text_y = (matrix_height // 2) + 7
                 if away_score_text != "0/0":
                     self._draw_text_with_outline(draw_overlay, away_score_text, (away_score_text_x, away_score_text_y), self.fonts['rank'], fill=(255, 255, 255))
@@ -637,15 +637,15 @@ class CricketScoreboardPlugin(BasePlugin):
                 session_y = 11
                 self._draw_text_with_outline(draw_overlay, session_text, (session_x, session_y), self.fonts['score'], fill=(255, 200, 0))
                 
-                score_width = draw_overlay.textlength(score_text, font=self.fonts['detail'])
-                score_x = (matrix_width - score_width) // 2
-                score_y = (matrix_height // 2) - 5
-                self._draw_text_with_outline(draw_overlay, score_text, (score_x, score_y), self.fonts['detail'], fill=(255, 255, 255))
+                #score_width = draw_overlay.textlength(score_text, font=self.fonts['detail'])
+                #score_x = (matrix_width - score_width) // 2
+                #score_y = (matrix_height // 2) - 5
+                #self._draw_text_with_outline(draw_overlay, score_text, (score_x, score_y), self.fonts['detail'], fill=(255, 255, 255))
 
                 summary_text = status.get('summary','')
                 summary_width = draw_overlay.textlength(summary_text, font=self.fonts['detail'])
                 summary_x = (matrix_width - summary_width) // 2
-                summary_y = (matrix_height // 2) + 11
+                summary_y = (matrix_height // 2) + 15
                 self._draw_text_with_outline(draw_overlay, summary_text, (summary_x, summary_y), self.fonts['detail'], fill=(255, 200, 0))
                 
                 venue_text = f"{game.get('generalClassCard','')} - {game.get('venue','')}"
