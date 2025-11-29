@@ -242,6 +242,13 @@ class CricketScoreboardPlugin(BasePlugin):
                 self.logger.error(f"Unknown league key: {league_key}")
                 return []
 
+            yesterday_date = now - timedelta(days=1)
+            tomorrow_date = now + timedelta(days=1)
+            yesterday_str = yesterday_date.strftime("%Y%m%d")
+            tomorrow_str = tomorrow_date.strftime("%Y%m%d")
+            formatted_date_parm = f"?dates={yesterday_str}-{tomorrow_str}"
+            url = url + formatted_date_parm
+            
             self.logger.info(f"Fetching {league_key} data from ESPN API...")
             response = requests.get(url, timeout=self.background_config.get('request_timeout', 30))
             response.raise_for_status()
