@@ -576,14 +576,23 @@ class CricketScoreboardPlugin(BasePlugin):
                 away_score = str(away_team.get('score', 0))
                 #score_text = f"{away_score}-{home_score}"
                 score_text = f"{home_score}-{away_score}"
+                
                 home_wickets = str(home_team.get('wickets', 0))
                 home_runs = str(home_team.get('runs', 0))
                 home_score_text = f"{home_wickets}/{home_runs}"
-                home_score_text_width = draw_overlay.textlength(home_score_text, font=self.fonts['time'])
+                home_score_text_width = draw_overlay.textlength(home_score_text, font=self.fonts['rank'])
                 home_score_text_x = 20
                 home_score_text_y = (matrix_height // 2)
-                self._draw_text_with_outline(draw_overlay, home_score_text, (home_score_text_x, home_score_text_y), self.fonts['time'], fill=(255, 255, 255))                
+                self._draw_text_with_outline(draw_overlay, home_score_text, (home_score_text_x, home_score_text_y), self.fonts['rank'], fill=(255, 255, 255))
 
+                away_wickets = str(away_team.get('wickets', 0))
+                away_runs = str(away_team.get('runs', 0))
+                away_score_text = f"{away_wickets}/{away_runs}"
+                away_score_text_width = draw_overlay.textlength(away_score_text, font=self.fonts['rank'])
+                away_score_text_x = matrix_width - 20
+                away_score_text_y = matrix_height // 2
+                self._draw_text_with_outline(draw_overlay, away_score_text, (away_score_text_x, away_score_text_y), self.fonts['rank'], fill=(255, 255, 255))
+                
                 # Inning/Status (top center)
                 if status.get('description') == 'Innings break':
                     status_text = status.get('description','Live')
