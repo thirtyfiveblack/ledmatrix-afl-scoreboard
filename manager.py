@@ -329,7 +329,7 @@ class CricketScoreboardPlugin(BasePlugin):
                     #'score': int(away_team.get('score', 0)),
                     'score': away_team.get('score', 'Unknown'),
                     'logo': away_team.get('team', {}).get('logo'),
-                    'wickets': if away_team_batting_one: away_team_batting_one.get('wickets',0) else 0
+                    if away_team_batting_one: 'wickets': away_team_batting_one.get('wickets',0) else 0
                     #'runs': away_team_batting_one.get('runs',0),
                     #'overs': away_team_batting_one.get('overs',0)
                 },
