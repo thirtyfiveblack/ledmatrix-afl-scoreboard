@@ -116,7 +116,7 @@ class CricketScoreboardPlugin(BasePlugin):
             fonts['status'] = ImageFont.truetype("assets/fonts/4x6-font.ttf", 6)
             #fonts['detail'] = ImageFont.truetype("assets/fonts/4x6-font.ttf", 6)
             fonts['detail'] = ImageFont.truetype("assets/fonts/PressStart2P-Regular.ttf", 6)
-            fonts['rank'] = ImageFont.truetype("assets/fonts/PressStart2P-Regular.ttf", 10)
+            fonts['rank'] = ImageFont.truetype("assets/fonts/PressStart2P-Regular.ttf", 9)
             self.logger.info("Successfully loaded fonts")
         except IOError as e:
             self.logger.warning(f"Fonts not found, using default PIL font: {e}")
@@ -581,7 +581,7 @@ class CricketScoreboardPlugin(BasePlugin):
                 home_runs = str(home_team.get('runs', 0))
                 home_score_text = f"{home_wickets}/{home_runs}"
                 home_score_text_width = draw_overlay.textlength(home_score_text, font=self.fonts['rank'])
-                home_score_text_x = 20
+                home_score_text_x = 10
                 home_score_text_y = (matrix_height // 2)
                 self._draw_text_with_outline(draw_overlay, home_score_text, (home_score_text_x, home_score_text_y), self.fonts['rank'], fill=(255, 255, 255))
 
@@ -589,7 +589,7 @@ class CricketScoreboardPlugin(BasePlugin):
                 away_runs = str(away_team.get('runs', 0))
                 away_score_text = f"{away_wickets}/{away_runs}"
                 away_score_text_width = draw_overlay.textlength(away_score_text, font=self.fonts['rank'])
-                away_score_text_x = matrix_width - 20
+                away_score_text_x = matrix_width - 30
                 away_score_text_y = matrix_height // 2
                 self._draw_text_with_outline(draw_overlay, away_score_text, (away_score_text_x, away_score_text_y), self.fonts['rank'], fill=(255, 255, 255))
                 
