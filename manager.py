@@ -318,18 +318,18 @@ class CricketScoreboardPlugin(BasePlugin):
                     'abbrev': home_team.get('team', {}).get('abbreviation', 'UNK'),
                     #'score': int(home_team.get('score', 0)),
                     'score': home_team.get('score', 'Unknown'),
-                    'logo': home_team.get('team', {}).get('logo'),
-                    'wickets': home_team_batting_one.get('wickets',0),
-                    'runs': home_team_batting_one.get('runs',0),
-                    'overs': home_team_batting_one.get('overs',0)
+                    'logo': home_team.get('team', {}).get('logo')
+                    #'wickets': home_team_batting_one.get('wickets',0),
+                    #'runs': home_team_batting_one.get('runs',0),
+                    #'overs': home_team_batting_one.get('overs',0)
                 },
                 'away_team': {
                     'name': away_team.get('team', {}).get('displayName', 'Unknown'),
                     'abbrev': away_team.get('team', {}).get('abbreviation', 'UNK'),
                     #'score': int(away_team.get('score', 0)),
                     'score': away_team.get('score', 'Unknown'),
-                    'logo': away_team.get('team', {}).get('logo'),
-                    if away_team_batting_one: 'wickets': away_team_batting_one.get('wickets',0) else 0
+                    'logo': away_team.get('team', {}).get('logo')
+                    #if away_team_batting_one: 'wickets': away_team_batting_one.get('wickets',0) else 0
                     #'runs': away_team_batting_one.get('runs',0),
                     #'overs': away_team_batting_one.get('overs',0)
                 },
@@ -346,6 +346,12 @@ class CricketScoreboardPlugin(BasePlugin):
                 'start_time': event.get('date', ''),
                 'venue': competition.get('venue', {}).get('fullName', 'Unknown Venue')
             }
+            if home_team_batting_one:
+                game['home_team'].update({
+                    'wickets': home_team_batting_one.get('wickets',0),
+                    'runs': home_team_batting_one.get('runs',0),
+                    'overs': home_team_batting_one.get('overs',0)
+                })
 
             return game
 
