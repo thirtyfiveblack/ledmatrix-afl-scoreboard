@@ -550,6 +550,7 @@ class CricketScoreboardPlugin(BasePlugin):
             home_team = game.get('home_team', {})
             away_team = game.get('away_team', {})
             status = game.get('status', {})
+            event_desc = game.get('event_desc', {})
 
             # Display team names/abbreviations
             home_name = home_team.get('name', 'HOME')
@@ -633,7 +634,7 @@ class CricketScoreboardPlugin(BasePlugin):
                     #status_text = f"{game.get('generalClassCard','')} - {status.get('description','Live')}"
 
                 #status_text = f"{game.get('generalClassCard','')} - {game.get('venue','')}"
-                status_text = status.get('event_desc','')
+                status_text = game.get('event_desc','')
                 
                 status_width = draw_overlay.textlength(status_text, font=self.fonts['time'])
                 status_x = (matrix_width - status_width) // 2
