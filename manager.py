@@ -623,22 +623,6 @@ class CricketScoreboardPlugin(BasePlugin):
                     self._draw_text_with_outline(draw_overlay, away_overs_text, (away_overs_text_x, away_overs_text_y), self.fonts['detail'], fill=(255, 255, 255))
                 
                 # Inning/Status (top center)
-                if status.get('description') == 'Innings break':
-                    status_text = status.get('description','Live')
-                elif status.get('state') == 'post':
-                    status_text = status.get('summary','Live')
-                elif status.get('state') == 'post':
-                    status_text = status.get('summary','Final')
-                elif status.get('state') == 'pre':
-                    status_text = status.get('summary','Upcoming')
-                    #status_text = f"{game.get('generalClassCard','')} - {status.get('summary','Upcoming')}"
-                else:
-                    # Live game - show inning
-                    status_text = status.get('description','Live')
-                    #status_text = f"{game.get('generalClassCard','')} - {status.get('description','Live')}"
-
-                #status_text = f"{game.get('generalClassCard','')} - {game.get('venue','')}"
-                #status_text = game.get('event_desc','')
                 status_text = game.get('event_name','')
                 
                 status_width = draw_overlay.textlength(status_text, font=self.fonts['time'])
@@ -647,7 +631,8 @@ class CricketScoreboardPlugin(BasePlugin):
                 self._draw_text_with_outline(draw_overlay, status_text, (status_x, status_y), self.fonts['time'], fill=(0, 255, 0))
                 
                 session_text = status.get('session','')
-                session_text = f"{game.get('comp_desc', {})} - {status.get('session','')}"
+                status_type_desc = status.get('description','')
+                session_text = f"{game.get('comp_desc', {})} - {session_text} - {status_type_desc}"
                 session_width = draw_overlay.textlength(session_text, font=self.fonts['score'])
                 session_x = (matrix_width - session_width) // 2
                 session_y = 11
