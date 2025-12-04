@@ -345,7 +345,9 @@ class CricketScoreboardPlugin(BasePlugin):
                 },
                 'start_time': event.get('date', ''),
                 'event_desc': event.get('description', ''),
-                'venue': competition.get('venue', {}).get('fullName', 'Unknown Venue')
+                'event_name': event.get('name', ''),
+                'venue': competition.get('venue', {}).get('fullName', 'Unknown Venue'),
+                'comp_desc': competition.get('description', '')
             }
             if home_team_batting_one:
                 game['home_team'].update({
@@ -551,6 +553,8 @@ class CricketScoreboardPlugin(BasePlugin):
             away_team = game.get('away_team', {})
             status = game.get('status', {})
             event_desc = game.get('event_desc', {})
+            event_name = game.get('event_name', {}) # Australia v England
+            comp_desc = game.get('comp_desc', {}) # 2nd Test
 
             # Display team names/abbreviations
             home_name = home_team.get('name', 'HOME')
@@ -598,7 +602,7 @@ class CricketScoreboardPlugin(BasePlugin):
                 home_overs_text_width = draw_overlay.textlength(home_overs_text, font=self.fonts['detail'])
                 home_overs_text_x = 10
                 home_overs_text_y = (matrix_height // 2) + 7
-                if home_score_text != "0/0":
+                if home_overs_text != "0 Overs":
                     self._draw_text_with_outline(draw_overlay, home_score_text, (home_score_text_x, home_score_text_y), self.fonts['rank'], fill=(255, 255, 255))
                     self._draw_text_with_outline(draw_overlay, home_overs_text, (home_overs_text_x, home_overs_text_y), self.fonts['detail'], fill=(255, 255, 255))
 
@@ -606,15 +610,15 @@ class CricketScoreboardPlugin(BasePlugin):
                 away_runs = str(away_team.get('runs', 0))
                 away_score_text = f"{away_wickets}/{away_runs}"
                 away_score_text_width = draw_overlay.textlength(away_score_text, font=self.fonts['rank'])
-                away_score_text_x = (matrix_width - 70)
+                away_score_text_x = (matrix_width - away_score_text_width - 10)
                 away_score_text_y = (matrix_height // 2) - 5
                 away_overs = str(away_team.get('overs', 0))
                 away_overs_text = f"{away_overs} Overs"
                 away_overs_text = away_overs_text.replace(".0 "," ")
                 away_overs_text_width = draw_overlay.textlength(away_overs_text, font=self.fonts['detail'])
-                away_overs_text_x = (matrix_width - 70)
+                away_overs_text_x = (matrix_width - away_overs_text_width - 10)
                 away_overs_text_y = (matrix_height // 2) + 7
-                if away_score_text != "0/0":
+                if away_overs_text != "0 Overs":
                     self._draw_text_with_outline(draw_overlay, away_score_text, (away_score_text_x, away_score_text_y), self.fonts['rank'], fill=(255, 255, 255))
                     self._draw_text_with_outline(draw_overlay, away_overs_text, (away_overs_text_x, away_overs_text_y), self.fonts['detail'], fill=(255, 255, 255))
                 
@@ -634,7 +638,8 @@ class CricketScoreboardPlugin(BasePlugin):
                     #status_text = f"{game.get('generalClassCard','')} - {status.get('description','Live')}"
 
                 #status_text = f"{game.get('generalClassCard','')} - {game.get('venue','')}"
-                status_text = game.get('event_desc','')
+                #status_text = game.get('event_desc','')
+                status_text = game.get('event_name','')
                 
                 status_width = draw_overlay.textlength(status_text, font=self.fonts['time'])
                 status_x = (matrix_width - status_width) // 2
@@ -642,6 +647,7 @@ class CricketScoreboardPlugin(BasePlugin):
                 self._draw_text_with_outline(draw_overlay, status_text, (status_x, status_y), self.fonts['time'], fill=(0, 255, 0))
                 
                 session_text = status.get('session','')
+                session_text = f"{game.get('comp_desc', {}) - status.get('session','')}"
                 session_width = draw_overlay.textlength(session_text, font=self.fonts['score'])
                 session_x = (matrix_width - session_width) // 2
                 session_y = 11
