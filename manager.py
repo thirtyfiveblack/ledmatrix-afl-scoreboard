@@ -470,7 +470,7 @@ class AFLScoreboardPlugin(BasePlugin):
             # Get logo directory from league configuration
             league_config = self.leagues.get(league, {})
             #logo_dir = league_config.get('logo_dir', 'assets/sports/AFL_logos')
-            logo_dir = league_config.get('logo_dir', 'plugin-repos/AFL-scoreboard/logos')
+            logo_dir = league_config.get('logo_dir', 'plugin-repos/afl-scoreboard/logos')
             
             # Convert relative path to absolute path by finding LEDMatrix project root
             if not os.path.isabs(logo_dir):
