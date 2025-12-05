@@ -643,7 +643,10 @@ class CricketScoreboardPlugin(BasePlugin):
                 
                 session_text = status.get('session','')
                 status_type_desc = status.get('description','')
-                session_text = f"{game.get('comp_desc', {})} - {session_text} - {status_type_desc}"
+                if session_text == "":
+                    session_text = f"{game.get('comp_desc', {})} - {status_type_desc}"
+                else:
+                    session_text = f"{game.get('comp_desc', {})} - {session_text} - {status_type_desc}"
                 session_width = draw_overlay.textlength(session_text, font=self.fonts['score'])
                 session_x = (matrix_width - session_width) // 2
                 session_y = 11
