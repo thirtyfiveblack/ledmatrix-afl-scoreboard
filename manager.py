@@ -275,10 +275,12 @@ class CricketScoreboardPlugin(BasePlugin):
 
         try:
             events = data.get('events', [])
+            league_name = data.get('leagues', {}).get('name','Unknown')
+            league_abbreviation = data.get('leagues', {}).get('abbreviation','Unknown')
 
             for event in events:
                 try:
-                    game = self._extract_game_info(event, league_key, league_config)
+                    game = self._extract_game_info(event, league_key, league_config, league_name, league_abbreviation)
                     if game:
                         games.append(game)
                 except Exception as e:
@@ -290,7 +292,7 @@ class CricketScoreboardPlugin(BasePlugin):
 
         return games
 
-    def _extract_game_info(self, event: Dict, league_key: str, league_config: Dict) -> Optional[Dict]:
+    def _extract_game_info(self, event: Dict, league_key: str, league_config: Dict, league_name: str, league_abbreviation: str) -> Optional[Dict]:
         """Extract game information from ESPN event."""
         try:
             competition = event.get('competitions', [{}])[0]
@@ -318,6 +320,8 @@ class CricketScoreboardPlugin(BasePlugin):
             game = {
                 'league': league_key,
                 'league_config': league_config,
+                'league_name': league_name,
+                'league_abbreviation': league_abbreviation,
                 'game_id': event.get('id'),
                 'generalClassCard': competition.get('class', {}).get('generalClassCard', 'Unknown Class'),
                 'home_team': {
