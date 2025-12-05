@@ -663,7 +663,8 @@ class CricketScoreboardPlugin(BasePlugin):
                 summary_y = (matrix_height // 2) + 15
                 self._draw_text_with_outline(draw_overlay, summary_text, (summary_x, summary_y), self.fonts['score'], fill=(255, 200, 0))
                 
-                venue_text = f"{game.get('generalClassCard','')} - {game.get('venue','')}"
+                #venue_text = f"{game.get('generalClassCard','')} - {game.get('venue','')}"
+                venue_text = f"{game.get('venue','')}"
                 venue_width = draw_overlay.textlength(venue_text, font=self.fonts['detail'])
                 venue_x = (matrix_width - venue_width) // 2
                 venue_y = matrix_height - 6
