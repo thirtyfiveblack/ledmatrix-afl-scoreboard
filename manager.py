@@ -275,8 +275,8 @@ class CricketScoreboardPlugin(BasePlugin):
 
         try:
             events = data.get('events', [])
-            league_name = data.get('leagues', []).get('name','Unknown')
-            league_abbreviation = data.get('leagues', []).get('abbreviation','Unknown')
+            league_name = data.get('leagues', [{}])[0].get('name','Unknown')
+            league_abbreviation = data.get('leagues', [{}])[0].get('abbreviation','Unknown')
 
             for event in events:
                 try:
