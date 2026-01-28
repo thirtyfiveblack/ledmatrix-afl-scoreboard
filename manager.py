@@ -48,7 +48,7 @@ class AFLScoreboardPlugin(BasePlugin):
 
     # ESPN API endpoints for AFL leagues
     ESPN_API_URLS = {
-        'afl': 'https://site.api.espn.com/apis/site/v2/sports/australian-football/afl/scoreboard?dates=20250927'
+        'afl': 'https://site.api.espn.com/apis/site/v2/sports/australian-football/afl/scoreboard' #?dates=20250927'
     }
 
     # League display names
